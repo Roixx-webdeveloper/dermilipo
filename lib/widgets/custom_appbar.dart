@@ -25,7 +25,6 @@ class CustomAppBar extends StatelessWidget {
               radius: 40,
               backgroundImage:  AssetImage('assets/person.jpg'),
             )
-           
           ],
         ),
       ),

@@ -30,11 +30,10 @@ class LoginHeader extends StatelessWidget {
             height: 20,
           ),
           const Text(
-            'Login',
-            
+            'Dermilipo',
             style: TextStyle(
                 fontSize: 30,
-                letterSpacing: 2.5,
+                letterSpacing: 7.0,
                 fontWeight: FontWeight.w300,
                 color: Colors.white),
           ),

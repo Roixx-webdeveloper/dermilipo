@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                     child: ElevatedButton(
                         style: AppTheme.loginButton,
                         onPressed: () {
-                          Navigator.pushNamed(context, '/profile');
+                          Navigator.pushNamed(context, '/home');
                         },
                         child: const Text(
                           'Iniciar Sesión',

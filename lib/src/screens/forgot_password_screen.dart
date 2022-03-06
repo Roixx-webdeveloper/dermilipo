@@ -50,15 +50,15 @@ class _ImageAndDescription extends StatelessWidget {
            ),
           const SizedBox(height: 30,),
           Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(left: 10, right: 10),
             child: Column(
               children: [
                 const Text('¿Olvidaste tu contraseña?', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
                 const SizedBox(height: 20,),
-                const Text('No te preocupes, para recuperar la contraseña ingresa el correo asociado a tu cuenta', textAlign: TextAlign.justify,style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500,),),
+                const Text('No te preocupes, para recuperar la contraseña ingresa el correo asociado a tu cuenta', textAlign: TextAlign.center,style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500,),),
                 const CustomInput(prefixIcon: Icons.email, hintText: 'Correo eléctronico', isPassword: false, keyboardType: TextInputType.emailAddress),
                 Padding(
-                  padding: const EdgeInsets.only(top: 40.0),
+                  padding: const EdgeInsets.only(top: 40.0,),
                   child: SizedBox(
                      height: 40,
                       width: 300,
@@ -94,22 +94,20 @@ class _titleInformation extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            onTap: ()=> Navigator.pop(context),
+            //onTap: ()=> Navigator.pop(context),
             child: Container(
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                    color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(10)),
                 child: const Icon(
                   FontAwesomeIcons.chevronLeft,
-                  color: Colors.white,
+                  color: Colors.deepPurpleAccent,
                   size: 20,
                 )),
           ),
-          const Spacer(),
           const Padding(
-            padding: EdgeInsets.only(left: 8.0, right: 30),
+            padding: EdgeInsets.only(left: 8.0, right: 8.0),
             child:  Text('Recuperar contraseña',
                 style: TextStyle(
                     color: Colors.deepPurple,

@@ -30,6 +30,8 @@ class MyApp extends StatelessWidget {
         '/profile': (_) => ProfileScreen(),
         '/forgot-password': (_) => ForgotPasswordScreen(),
         '/home': (_) => HomeScreen(),
+        '/routine': (_) => RoutineScren(),
+        '/options': (_) => OptionsScreen()
       },
       theme: AppTheme.lightTheme,
     );

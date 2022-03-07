@@ -94,7 +94,7 @@ class _titleInformation extends StatelessWidget {
       child: Row(
         children: [
           GestureDetector(
-            //onTap: ()=> Navigator.pop(context),
+            onTap: ()=> Navigator.pop(context),
             child: Container(
                 width: 40,
                 height: 40,

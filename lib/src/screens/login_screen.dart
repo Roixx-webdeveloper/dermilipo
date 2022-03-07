@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                       child: ElevatedButton.icon(
                           style: AppTheme.loginButtonGoogle,
                           onPressed: () {
-                            Navigator.pushNamed(context, '/profile');
+                          Navigator.pushNamed(context, '/home');
                           },
                           icon: Image(
                             image: AssetImage('assets/icons/google_logo.png'),

@@ -44,7 +44,8 @@ class HomeScreen extends StatelessWidget {
               Row(
                 children: [
                   CustomTimers(
-                    timerText: 'Dosis (j/cm2)',
+                    timerText: 'Dosis:',
+                    aden: '(j/cm2)',
                     sliderValue: dosis,
                     onChanged: () => routineProvider.changeDosis(dosis),
                     min: 7,
@@ -52,12 +53,13 @@ class HomeScreen extends StatelessWidget {
                     divisions: 10,
                   ),
                   CustomTimers(
-                    timerText: 'Tiempo (mm)',
+                    timerText: 'Tiempo:',
+                    aden: 'minutos',
                     sliderValue: sessionTime,
                     onChanged: () => routineProvider.changeTime(sessionTime),
                     min: 5,
                     max: 15,
-                    divisions: 10,
+                    divisions: 3,
                   ),
                 ],
               ),
@@ -99,7 +101,7 @@ class _quickPower extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const Text('Rutinas'),
+          const Text('Rutinas', style: TextStyle(fontWeight: FontWeight.bold),),
           Row(
             children: const[
               CustomRoutineButton(routineName: 'Cuello',),

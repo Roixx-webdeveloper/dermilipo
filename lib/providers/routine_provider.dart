@@ -23,7 +23,7 @@ class RoutineProvider extends ChangeNotifier {
   }
 
   void changeTime (double value){
-    dosisValue=value;
+    sessionTime=value;
     notifyListeners();
   }
 

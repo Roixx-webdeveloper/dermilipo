@@ -1,6 +1,6 @@
 import 'package:dermilipo_app/themes/app_theme.dart';
-import 'package:dermilipo_app/widgets/custom_appbar.dart';
 import 'package:dermilipo_app/widgets/custom_bottom_nav.dart';
+import 'package:dermilipo_app/widgets/utils/custom_navbar.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -8,232 +8,150 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return SafeArea(
-      child: Scaffold(
-       
-          body: Column(
-            children: [_ProfileTop(size: size), 
-            _ProfileBottom(size: size)],
-          ),
-        
-        bottomNavigationBar: const CustomBottomNav(),
-      ),
-    );
-  }
-}
-
-class _ProfileBottom extends StatelessWidget {
-  const _ProfileBottom({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: Colors.white,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text('Información del paciente'),
-          Text('Angela Hernandez'),
-          Text('Edad 35'),
-        ],
-      ),
-    );
-  }
-}
-
-class _ProfileTop extends StatelessWidget {
-  const _ProfileTop({
-    Key? key,
-    required this.size,
-  }) : super(key: key);
-
-  final Size size;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(40.0)),
-        color: AppTheme.primaryColor
-      ),
-      height: size.height * 0.30,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustomAppBar(),
-            SizedBox(height: size.height * 0.02),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  const _WelcomeText(),
-                  SizedBox(
-                    height: size.height * 0.03,
-                  ),
-                ],
-              ),
-            )
-          ],
+    return Scaffold(
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(50),
+        child: CustomAppBar(
+          icon: Icons.house_rounded,
+          routeName: '/home',
         ),
       ),
-    );
-  }
-}
-
-class _QuickRoutine extends StatelessWidget {
-  const _QuickRoutine({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),
-      height: size.height * 0.20,
-      child: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(
-            height: size.height * 0.01,
-          ),
-          const Text(
-            'Resúmen de la semana',
-            style: TextStyle(
-                color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: size.height * 0.02,
-          ),
-          SizedBox(
-              height: size.height * 0.10,
-              child: ListView.builder(
-                  itemCount: 7,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (BuildContext context, int day) {
-                    return _RoundedDay(dayNumber: day.toString());
-                  }))
-        ],
-      ),
-    );
-  }
-}
-
-class _RoundedDay extends StatelessWidget {
-  const _RoundedDay({
-    Key? key,
-    required this.dayNumber,
-  }) : super(key: key);
-
-  final String dayNumber;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 3.0),
-      child: Column(
         children: [
-          Text(
-            'M0',
-            style: TextStyle(color: Colors.white),
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          Container(
-            alignment: Alignment.center,
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-                color: AppTheme.greenColor,
-                borderRadius: BorderRadius.circular(30)),
+          Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/person.jpg'),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
-                  '18',
-                  style: TextStyle(color: Colors.white),
+                  'Karla Cisneros',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  'karla_cis@mail.com',
+                  style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
                 ),
               ],
             ),
           ),
+          Spacer(),
+          Container(
+            width: double.infinity,
+            height: 400,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(80),
+                    topRight: Radius.circular(80))),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  'Información del paciente',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+                _labelInformation(
+                  icon: Icons.phone,
+                  title: 'Número Telefónico:',
+                  subtitle: '+58 412111000',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                _labelInformation(
+                  icon: Icons.pin_drop_sharp,
+                  title: 'Dirección:',
+                  subtitle: 'Zapopan, México',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                _labelInformation(
+                  icon: Icons.today,
+                  title: 'Inicio del tratamiento:',
+                  subtitle: '12/01/22',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                _labelInformation(
+                  icon: Icons.list_alt,
+                  title: 'Sesiones registradas:',
+                  subtitle: '5',
+                ),
+              ],
+            ),
+          )
         ],
       ),
+      bottomNavigationBar: CustomBottomNav(),
     );
   }
 }
 
-class _WelcomeText extends StatelessWidget {
-  const _WelcomeText({
+class _labelInformation extends StatelessWidget {
+  const _labelInformation({
     Key? key,
+    required this.icon,
+    required this.title,
+    required this.subtitle,
   }) : super(key: key);
+
+  final IconData icon;
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Welcome,',
-          style: TextStyle(color: Colors.white, fontSize: 25),
-        ),
-        Row(
-          children: const [
-            SizedBox(
-              width: 10,
-            ),
-            Text(
-              'Angela!',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class _ProfileData extends StatelessWidget {
-  const _ProfileData({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 30),
+    return Padding(
+      padding: const EdgeInsets.only(left: 30.0, top: 20),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 50,
-            height: 50,
-            color: Colors.red,
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                  color: Colors.deepPurple, shape: BoxShape.circle),
+              child: Icon(
+                icon,
+                color: Colors.white,
+              )),
+          Spacer(),
+          Column(
+            children: [
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                '$title',
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
+              ),
+              Text(
+                '$subtitle',
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 17),
+              )
+            ],
           ),
-          const SizedBox(
-            width: 300,
+          SizedBox(
+            width: 40,
           ),
-          Container(
-            width: 30,
-            height: 30,
-            color: Colors.red,
-          ),
+          Spacer(),
         ],
       ),
     );
